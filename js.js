@@ -4,23 +4,23 @@ let todoList = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
 const form = document.getElementById('task-form')
 
-function clickedButton () {
-    let taskDiv = document.createElement('div')
-    taskDiv.classList.add('task-card')
-    let xBtn = document.createElement('button')
-    xBtn.classList.add('exclude-btn')
-    xBtn.innerHTML = 'X'
-    const nameTask = document.createElement('h3')
-    nameTask.textContent = taskName.value
-    let descriptionTask = document.createElement('p')
-    descriptionTask.textContent = taskName.value
+function createTask () {
+    let taskCard = document.createElement('div')
+    taskCard.classList.add('task-card')
+    let excludeBtn = document.createElement('button')
+    excludeBtn.classList.add('exclude-btn')
+    excludeBtn.innerHTML = 'X'
+    const taskTitle = document.createElement('h3')
+    taskTitle.textContent = taskName.value
+    let taskBody = document.createElement('p')
+    taskBody.textContent = taskDescription.value
     
-    todoList.appendChild(taskDiv);
-    taskDiv.appendChild(nameTask);
-    taskDiv.appendChild(descriptionTask);
-    taskDiv.appendChild(xBtn);
+    todoList.appendChild(taskCard);
+    taskCard.appendChild(taskTitle);
+    taskCard.appendChild(taskBody);
+    taskCard.appendChild(excludeBtn);
     form.reset()
     
 }
 
-taskBtn.addEventListener("click", clickedButton);
+taskBtn.addEventListener("click", createTask);
