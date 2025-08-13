@@ -22,5 +22,10 @@ function createTask () {
     form.reset()
     
 }
-
+function removeTask (e){
+    if (e.target.classList.contains('exclude-btn')) {
+        e.target.closest('.task-card').remove();
+    }
+}
 taskBtn.addEventListener("click", createTask);
+todoList.addEventListener("click",removeTask);
