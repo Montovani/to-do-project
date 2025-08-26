@@ -1,24 +1,28 @@
-let taskName = document.getElementById('taskname');
-let taskDescription = document.getElementById('taskdescription')
-let todoList = document.getElementById('cards-list')
+const taskName = document.getElementById('taskname');
+const taskDescription = document.getElementById('taskdescription')
+const todoList = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
 const form = document.getElementById('task-form')
 
 function createTask () {
-    let taskCard = document.createElement('div')
+    const taskCard = document.createElement('div')
     taskCard.classList.add('task-card')
-    let excludeBtn = document.createElement('button')
+
+    const excludeBtn = document.createElement('button')
     excludeBtn.classList.add('exclude-btn')
     excludeBtn.innerHTML = 'X'
+
     const taskTitle = document.createElement('h3')
     taskTitle.textContent = taskName.value
-    let taskBody = document.createElement('p')
+
+    const taskBody = document.createElement('p')
     taskBody.textContent = taskDescription.value
     
     todoList.appendChild(taskCard);
     taskCard.appendChild(taskTitle);
     taskCard.appendChild(taskBody);
     taskCard.appendChild(excludeBtn);
+
     form.reset()
     
 }
