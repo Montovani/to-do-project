@@ -1,0 +1,33 @@
+#taskname {
+    width: 300px;
+}
+#taskdescription {
+    width: 500px;
+    height: 150px;
+    margin-top: 10px;
+}
+.task-form{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: 500px;
+    padding: 10px;
+    height: auto;
+}
+.new-task-btn {
+    align-self: flex-end;
+    
+}
+.task-card {
+    width: 300px;
+    height: auto;
+    background-color: rgb(169, 165, 165);
+    padding: 10px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+}
+.exclude-btn {
+    align-self: flex-end;
+    margin-top: auto;
+}
