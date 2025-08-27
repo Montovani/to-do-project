@@ -9,9 +9,9 @@ function createTask () {
     const taskCard = document.createElement('div')
     taskCard.classList.add('task-card')
 
-    const excludeBtn = document.createElement('button')
-    excludeBtn.classList.add('exclude-btn')
-    excludeBtn.innerHTML = 'X'
+    const deleteBtn = document.createElement('button')
+    deleteBtn.classList.add('delete-btn')
+    deleteBtn.innerHTML = 'X'
 
     const taskTitle = document.createElement('h3')
     taskTitle.textContent = taskName.value
@@ -22,13 +22,13 @@ function createTask () {
     todoList.appendChild(taskCard);
     taskCard.appendChild(taskTitle);
     taskCard.appendChild(taskBody);
-    taskCard.appendChild(excludeBtn);
+    taskCard.appendChild(deleteBtn);
 
     form.reset()
     
 }
 function removeTask (e){
-    if (e.target.classList.contains('exclude-btn')) {
+    if (e.target.classList.contains('delete-btn')) {
         e.target.closest('.task-card').remove();
     }
 }
