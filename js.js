@@ -1,3 +1,4 @@
+(function(){ 
 const taskName = document.getElementById('taskname');
 const taskDescription = document.getElementById('taskdescription')
 const todoList = document.getElementById('cards-list')
@@ -31,5 +32,8 @@ function removeTask (e){
         e.target.closest('.task-card').remove();
     }
 }
+
 taskBtn.addEventListener("click", createTask);
 todoList.addEventListener("click",removeTask);
+
+})();
