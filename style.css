@@ -26,8 +26,9 @@
     border: 2px solid black;
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
 }
-.exclude-btn {
+.delete-btn {
     align-self: flex-end;
     margin-top: auto;
 }
