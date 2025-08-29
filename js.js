@@ -1,11 +1,11 @@
 (function(){ 
-const taskName = document.getElementById('taskname');
-const taskDescription = document.getElementById('taskdescription')
 const todoList = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
-const form = document.getElementById('task-form')
 
 function createTask () {
+    const taskName = document.getElementById('taskname');
+    const taskDescription = document.getElementById('taskdescription')
+    const form = document.getElementById('task-form')
     const taskCard = document.createElement('div')
     taskCard.classList.add('task-card')
 
