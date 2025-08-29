@@ -36,4 +36,10 @@ function removeTask (e){
 taskBtn.addEventListener("click", createTask);
 todoList.addEventListener("click",removeTask);
 
+window.addEventListener('unload',function() {
+    taskBtn.removeEventListener("click", createTask);
+    todoList.removeEventListener("click",removeTask);
+    console.log('[unload] listeners removed')
+})
+
 })();
