@@ -1,8 +1,7 @@
 (function(){ 
 const todoList = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
-
-const listSavedTasks = JSON.parse(localStorage.getItem('saved'))
+const listOfTasks = JSON.parse(localStorage.getItem('savedTasks')) || []
 loadSavedTasks()
 
 function createTask () {
@@ -26,29 +25,30 @@ function createTask () {
     taskCard.appendChild(taskTitle);
     taskCard.appendChild(taskBody);
     taskCard.appendChild(deleteBtn);
+    
+    listOfTasks.push(taskCard.outerHTML)
     saveTasks()
     form.reset()
     
 }
 function removeTask (e){
     if (e.target.classList.contains('delete-btn')) {
-        e.target.closest('.task-card').remove()
+        for (let i in listOfTasks ){
+            listOfTasks.splice(i,1)
+            e.target.closest('.task-card').remove()
+            
+        }
         saveTasks()
     }
 }
 
 function saveTasks() {
-    const savedTasks = []
-    document.querySelectorAll('.task-card').forEach(function(item){
-        savedTasks.push(item.outerHTML)
-    })
-    console.log(savedTasks)
-    localStorage.setItem('saved',JSON.stringify(savedTasks))
+   localStorage.setItem('savedTasks',JSON.stringify(listOfTasks))
 }
 
 function loadSavedTasks () {
     const taskItems = document.createElement('div')
-    taskItems.innerHTML = listSavedTasks
+    taskItems.innerHTML = listOfTasks
     todoList.appendChild(taskItems)
 }
 
