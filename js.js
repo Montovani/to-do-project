@@ -9,7 +9,23 @@ loadSavedTasks()
 function getTaskNameData () {
     tasks.push(document.querySelector('#taskname').value)
     console.log(tasks)
-    form.reset()
+    //form.reset()
+}
+
+function createTaskHTMLElements () { 
+    const taskCard = document.createElement('div')
+    const taskTitle = document.createElement('h3')
+    const taskDescription = document.createElement('p')
+    displayTask (taskCard,taskTitle,taskDescription)
+}
+
+function displayTask (taskCard,taskTitle,taskDescription) {
+    tasks.forEach((element) => {
+        taskCard.textContent = element
+        todoList.appendChild(taskCard)
+    })
+
+
 }
 
 function createTask () {
@@ -17,7 +33,7 @@ function createTask () {
     //console.log("task name is:" + taskName)
     const taskDescription = document.getElementById('taskdescription')
     const form = document.getElementById('task-form')
-    const taskCard = document.createElement('div')
+    const taskCards = document.createElement('div')
     taskCard.classList.add('task-card')
 
     const deleteBtn = document.createElement('button')
@@ -63,7 +79,10 @@ function loadSavedTasks () {
 
 
 //taskBtn.addEventListener("click", createTask);
+
 taskBtn.addEventListener("click", getTaskNameData);
+taskBtn.addEventListener("click", createTaskHTMLElements);
+
 todoList.addEventListener("click",removeTask);
 
 window.addEventListener('unload',function() {
