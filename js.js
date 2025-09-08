@@ -1,11 +1,20 @@
-(function(){ 
+//(function(){ 
 const todoList = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
 const listOfTasks = JSON.parse(localStorage.getItem('savedTasks')) || []
+const form = document.getElementById('task-form')
+const tasks = []
 loadSavedTasks()
 
+function getTaskNameData () {
+    tasks.push(document.querySelector('#taskname').value)
+    console.log(tasks)
+    form.reset()
+}
+
 function createTask () {
-    const taskName = document.getElementById('taskname');
+    const taskName = document.getElementById('taskname').value;
+    //console.log("task name is:" + taskName)
     const taskDescription = document.getElementById('taskdescription')
     const form = document.getElementById('task-form')
     const taskCard = document.createElement('div')
@@ -53,7 +62,8 @@ function loadSavedTasks () {
 }
 
 
-taskBtn.addEventListener("click", createTask);
+//taskBtn.addEventListener("click", createTask);
+taskBtn.addEventListener("click", getTaskNameData);
 todoList.addEventListener("click",removeTask);
 
 window.addEventListener('unload',function() {
@@ -61,4 +71,5 @@ window.addEventListener('unload',function() {
     todoList.removeEventListener("click",removeTask);
     console.log('[unload] listeners removed')
 })
-})();
+
+//})();
