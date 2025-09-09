@@ -3,12 +3,13 @@ const todoList = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
 const listOfTasks = JSON.parse(localStorage.getItem('savedTasks')) || []
 const form = document.getElementById('task-form')
-const tasks = []
-loadSavedTasks()
+let tasks = []
+loadTaskName()
 
 function getTaskNameData () {
     tasks.push(document.querySelector('#taskname').value)
     console.log(tasks)
+    saveTaskName(tasks)
     //form.reset()
 }
 
@@ -24,8 +25,15 @@ function displayTask (taskCard,taskTitle,taskDescription) {
         taskCard.textContent = element
         todoList.appendChild(taskCard)
     })
+}
 
-
+function saveTaskName (tasks) {
+    localStorage.setItem('savedTaskName',JSON.stringify(tasks))
+}
+function loadTaskName () {
+    if (tasks = []) {
+        tasks = JSON.parse(localStorage.getItem('savedTaskName'))
+    }
 }
 
 function createTask () {
