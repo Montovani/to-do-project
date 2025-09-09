@@ -22,8 +22,8 @@ function createTaskHTMLElements () {
 
 function displayTask (taskCard,taskTitle,taskDescription) {
     tasks.forEach((element) => {
-        taskCard.textContent = element
-        todoList.appendChild(taskCard)
+        taskTitle.textContent = element
+        todoList.appendChild(taskTitle)
     })
 }
 
@@ -33,6 +33,11 @@ function saveTaskName (tasks) {
 function loadTaskName () {
     if (tasks = []) {
         tasks = JSON.parse(localStorage.getItem('savedTaskName'))
+        tasks.forEach((element) =>{
+            const taskTitle = document.createElement('h3')
+            taskTitle.textContent = element
+            todoList.appendChild(taskTitle)
+        })
     }
 }
 
