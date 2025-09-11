@@ -56,12 +56,15 @@ function displayTodos (todoList) {
 
 function removeTask (e){
     if (e.target.classList.contains('delete-btn')) {
-        for (let i in listOfTasks ){
-            listOfTasks.splice(i,1)
+        for (let i in tasks ){
+            i = tasks.findIndex((element) => element === e.target.previousSibling.previousSibling.textContent)
+            console.log('index found: ' + i)
+            tasks.splice(i,1)
+            console.log(tasks)
+            saveTaskName(tasks)
             e.target.closest('.task-card').remove()
             
         }
-        saveTasks()
     }
 }
 
