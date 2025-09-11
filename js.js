@@ -1,7 +1,6 @@
-//(function(){ 
+(function(){ 
 const todoListElement = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
-const listOfTasks = JSON.parse(localStorage.getItem('savedTasks')) || []
 const form = document.getElementById('task-form')
 const LOCAL_STORAGE_TODO_LIST_NAME = 'mainTodoPage:TodoList'
 const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODO_LIST_NAME)) || []
@@ -51,7 +50,7 @@ function displayTodos (todoList) {
     console.log(todoElements)
     todoListElement.innerHTML = ''
     todoListElement.append(...todoElements)
-    //todoElements.forEach((element) => todoListElement.appendChild(element))
+    //todoElements.forEach((element) => todoListElement.appendChild(element)) - Another way I thought that could work.
 }
 
 function removeTask (e){
@@ -77,4 +76,4 @@ window.addEventListener('unload',function() {
     console.log('[unload] listeners removed')
 })
 
-//})();
+})();
