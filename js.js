@@ -1,34 +1,32 @@
-(function(){ 
-const todoList = document.getElementById('cards-list')
+//(function(){ 
+const todoListElement = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
 const listOfTasks = JSON.parse(localStorage.getItem('savedTasks')) || []
 const form = document.getElementById('task-form')
-let tasks = []
+const LOCAL_STORAGE_TODO_LIST_NAME = 'mainTodoPage:TodoList'
+const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODO_LIST_NAME)) || []
 loadTaskName()
 
 function loadTaskName () {
-    if (tasks = []) {
-        tasks = JSON.parse(localStorage.getItem('savedTaskName'))
-        addDataToCard()
-        }
+        displayTodos(tasks)
     }
 
-function getTaskNameData () {
-    const inputPlace = document.querySelector('#taskname')
-    if (inputPlace.value !== '') {
-    tasks.push(inputPlace.value)
-    console.log(tasks)
-    form.reset()
+function addNewTaskToTodos () {
+    const taskName = document.querySelector('#taskname')?.value
+    if (taskName) {
+        tasks.push(taskName)
+        console.log(tasks)
+        console.log(taskName)
+        saveTaskName(tasks)
+        todoListElement.appendChild(createCard(taskName))
+        form.reset()
     } else {
         alert('Please write your task before adding')
     }
-    saveTaskName(tasks)
-    addDataToCard()
-    form.reset()
 }
 
 function saveTaskName (tasks) {
-    localStorage.setItem('savedTaskName',JSON.stringify(tasks))
+    localStorage.setItem(LOCAL_STORAGE_TODO_LIST_NAME,JSON.stringify(tasks))
 }
 
 
@@ -42,16 +40,18 @@ function createCard (task) {
         deleteBtn.classList.add('delete-btn')
         deleteBtn.innerHTML = 'X'
 
-        todoList.appendChild(taskCard);
         taskCard.appendChild(taskTitle);
         taskCard.appendChild(taskDescription);
         taskCard.appendChild(deleteBtn);
+        return  taskCard
 }
 
-function addDataToCard () {
-    tasks.forEach((element) => {
-        createCard(element)
-    })
+function displayTodos (todoList) {
+    const  todoElements = todoList.map((element) => createCard(element))
+    console.log(todoElements)
+    todoListElement.innerHTML = ''
+    todoListElement.append(...todoElements)
+    //todoElements.forEach((element) => todoListElement.appendChild(element))
 }
 
 function removeTask (e){
@@ -65,13 +65,13 @@ function removeTask (e){
     }
 }
 
-taskBtn.addEventListener("click", getTaskNameData);
-todoList.addEventListener("click",removeTask);
+taskBtn.addEventListener("click", addNewTaskToTodos);
+todoListElement.addEventListener("click",removeTask);
 
 window.addEventListener('unload',function() {
-    taskBtn.removeEventListener("click", createTask);
-    todoList.removeEventListener("click",removeTask);
+    taskBtn.removeEventListener("click", addNewTaskToTodos);
+    todoListElement.removeEventListener("click",removeTask);
     console.log('[unload] listeners removed')
 })
 
-})();
+//})();
