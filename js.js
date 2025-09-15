@@ -4,19 +4,17 @@ const taskBtn = document.getElementById('submit-btn')
 const form = document.getElementById('task-form')
 const LOCAL_STORAGE_TODO_LIST_NAME = 'mainTodoPage:TodoList'
 const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODO_LIST_NAME)) || []
-loadTaskName()
+loadTaskName(tasks)
 
-function loadTaskName () {
-        displayTodos(tasks)
+function loadTaskName (taskList) {
+        displayTodos(taskList)
     }
 
-function addNewTaskToTodos () {
+function addNewTaskToTodos (task) {
     const taskName = document.querySelector('#taskname')?.value
     if (taskName) {
-        tasks.push(taskName)
-        console.log(tasks)
-        console.log(taskName)
-        saveTaskName(tasks)
+        task.push(taskName)
+        saveTaskName(task)
         todoListElement.appendChild(createCard(taskName))
         form.reset()
     } else {
@@ -24,8 +22,8 @@ function addNewTaskToTodos () {
     }
 }
 
-function saveTaskName (tasks) {
-    localStorage.setItem(LOCAL_STORAGE_TODO_LIST_NAME,JSON.stringify(tasks))
+function saveTaskName (task) {
+    localStorage.setItem(LOCAL_STORAGE_TODO_LIST_NAME,JSON.stringify(task))
 }
 
 
@@ -50,7 +48,6 @@ function displayTodos (todoList) {
     console.log(todoElements)
     todoListElement.innerHTML = ''
     todoListElement.append(...todoElements)
-    //todoElements.forEach((element) => todoListElement.appendChild(element)) - Another way I thought that could work.
 }
 
 function removeTask (e){
@@ -67,11 +64,11 @@ function removeTask (e){
     }
 }
 
-taskBtn.addEventListener("click", addNewTaskToTodos);
+taskBtn.addEventListener("click", () => addNewTaskToTodos(tasks));
 todoListElement.addEventListener("click",removeTask);
 
 window.addEventListener('unload',function() {
-    taskBtn.removeEventListener("click", addNewTaskToTodos);
+    taskBtn.removeEventListener("click", () => addNewTaskToTodos(tasks));
     todoListElement.removeEventListener("click",removeTask);
     console.log('[unload] listeners removed')
 })
