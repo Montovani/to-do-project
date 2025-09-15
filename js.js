@@ -40,6 +40,7 @@ function createCard (task) {
         taskCard.appendChild(taskTitle);
         taskCard.appendChild(taskDescription);
         taskCard.appendChild(deleteBtn);
+        //createEventListener(deleteBtn) - Another option is to create the event listener for each deleteBtn see the function bellow
         return  taskCard
 }
 
@@ -50,22 +51,30 @@ function displayTodos (todoList) {
     todoListElement.append(...todoElements)
 }
 
+function createEventListener (newDeleteBtn) {
+    newDeleteBtn.addEventListener('click', (e) => {
+        const index = tasks.findIndex((element) => element === e.target.previousSibling.previousSibling.textContent)
+        console.log('index found: ' + index)
+        tasks.splice(index,1)
+        console.log(tasks)
+        saveTaskName(tasks)
+        e.target.parentNode.remove()
+})
+}
+
 function removeTask (e){
     if (e.target.classList.contains('delete-btn')) {
-        for (let i in tasks ){
-            i = tasks.findIndex((element) => element === e.target.previousSibling.previousSibling.textContent)
-            console.log('index found: ' + i)
-            tasks.splice(i,1)
-            console.log(tasks)
-            saveTaskName(tasks)
-            e.target.closest('.task-card').remove()
-            
-        }
+        const index = tasks.findIndex((element) => element === e.target.previousSibling.previousSibling.textContent)
+        console.log('index found: ' + index)
+        tasks.splice(index,1)
+        console.log(tasks)
+        saveTaskName(tasks)
+        e.target.parentNode.remove()
     }
 }
 
 taskBtn.addEventListener("click", () => addNewTaskToTodos(tasks));
-todoListElement.addEventListener("click",removeTask);
+todoListElement.addEventListener("click", removeTask);
 
 window.addEventListener('unload',function() {
     taskBtn.removeEventListener("click", () => addNewTaskToTodos(tasks));
