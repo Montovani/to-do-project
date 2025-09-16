@@ -51,6 +51,7 @@ function displayTodos (todoList) {
     todoListElement.append(...todoElements)
 }
 
+//In case you want to use this function to create an event listener for each card.
 function createEventListener (newDeleteBtn) {
     newDeleteBtn.addEventListener('click', (e) => {
         const index = tasks.findIndex((element) => element === e.target.previousSibling.previousSibling.textContent)
