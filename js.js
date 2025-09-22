@@ -56,8 +56,11 @@ function displayTodos (todoList) {
 }
 
 function removeTask (e){
+    console.log(e.target.parentNode)
+    console.log(e.currentTarget.children)
     if (e.target.classList.contains('delete-btn')) {
-        const index = tasks.findIndex((element) => element === e.target.previousSibling.previousSibling.textContent)
+        const cardList = e.target.parentNode
+        const index = [...e.currentTarget.children].indexOf(cardList)
         console.log('index found: ' + index)
         tasks.splice(index,1)
         console.log(tasks)
