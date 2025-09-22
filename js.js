@@ -1,7 +1,6 @@
 (function(){ 
 const todoListElement = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
-const form = document.getElementById('task-form')
 const LOCAL_STORAGE_TODO_LIST_NAME = 'mainTodoPage:TodoList'
 const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODO_LIST_NAME)) || []
 loadTaskName(tasks)
@@ -12,6 +11,7 @@ function loadTaskName (taskList) {
 
 function addNewTaskToTodos (task) {
     const taskName = document.querySelector('#taskname')?.value
+    const form = document.getElementById('task-form')
     if (taskName) {
         task.push(taskName)
         saveTaskName(task)
