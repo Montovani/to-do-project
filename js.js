@@ -1,4 +1,4 @@
-(function(){ 
+//(function(){ 
 const todoListElement = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
 const LOCAL_STORAGE_TODO_LIST_NAME = 'mainTodoPage:TodoList'
@@ -11,14 +11,18 @@ function loadTaskName (taskList) {
 
 function addNewTaskToTodos (task) {
     const taskName = document.querySelector('#taskname')?.value
+    const taskDesc = document.querySelector('#taskdescription')?.value
     const form = document.getElementById('task-form')
     if (taskName) {
-        task.push(taskName)
+        const taskObject = {}
+        taskObject.taskName = taskName
+        taskObject.taskDescription = taskDesc
+        task.push(taskObject)
         saveTaskName(task)
-        todoListElement.appendChild(createCard(taskName))
+        todoListElement.appendChild(createCard(taskName,taskDesc))
         form.reset()
     } else {
-        alert('Please write your task before adding')
+        alert('Please write your task name before adding')
     }
 }
 
@@ -27,12 +31,13 @@ function saveTaskName (task) {
 }
 
 
-function createCard (task) {
+function createCard (taskName, taskDesc) {
         const taskCard = document.createElement('div')
         taskCard.classList.add('task-card')
         const taskTitle = document.createElement('h3')
-        taskTitle.textContent = task
+        taskTitle.textContent = taskName
         const taskDescription = document.createElement('p')
+        taskDescription.textContent = taskDesc
         const deleteBtn = document.createElement('button')
         deleteBtn.classList.add('delete-btn')
         deleteBtn.innerHTML = 'X'
@@ -70,4 +75,4 @@ window.addEventListener('unload',function() {
     console.log('[unload] listeners removed')
 })
 
-})();
+//})();
