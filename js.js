@@ -49,7 +49,7 @@ function createCard (taskName, taskDesc) {
 }
 
 function displayTodos (todoList) {
-    const  todoElements = todoList.map((element) => createCard(element))
+    const  todoElements = todoList.map((element) => createCard(element.taskName,element.taskDescription))
     console.log(todoElements)
     todoListElement.innerHTML = ''
     todoListElement.append(...todoElements)
