@@ -1,4 +1,4 @@
-//(function(){ 
+(function(){ 
 const todoListElement = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
 const LOCAL_STORAGE_TODO_LIST_NAME = 'mainTodoPage:TodoList'
@@ -56,8 +56,9 @@ function displayTodos (todoList) {
 }
 
 function removeTask (e){
+    console.log(e)
     console.log(e.target.parentNode)
-    console.log(e.currentTarget.children)
+    console.log([...e.currentTarget.children])
     if (e.target.classList.contains('delete-btn')) {
         const cardList = e.target.parentNode
         const index = [...e.currentTarget.children].indexOf(cardList)
@@ -78,4 +79,4 @@ window.addEventListener('unload',function() {
     console.log('[unload] listeners removed')
 })
 
-//})();
+})();
