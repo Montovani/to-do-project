@@ -9,7 +9,7 @@ function loadTasksData (taskList) {
         displayTodos(taskList)
     }
 
-function addNewTaskToTodos (task) {
+function addNewTaskToTodos (tasksData) {
     const taskName = document.querySelector('#taskname')?.value
     const taskDesc = document.querySelector('#taskdescription')?.value
     const form = document.getElementById('task-form')
@@ -17,8 +17,8 @@ function addNewTaskToTodos (task) {
         const taskObject = {}
         taskObject.taskName = taskName
         taskObject.taskDescription = taskDesc
-        task.push(taskObject)
-        saveTasksData(task)
+        tasksData.push(taskObject)
+        saveTasksData(tasksData)
         todoListElement.appendChild(createCard(taskName,taskDesc))
         form.reset()
     } else {
