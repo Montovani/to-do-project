@@ -3,6 +3,7 @@ const todoListElement = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
 const LOCAL_STORAGE_TODO_LIST_NAME = 'mainTodoPage:TodoList'
 const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODO_LIST_NAME)) || []
+console.log(tasks)
 loadTasksData(tasks)
 
 function loadTasksData (taskList) {
@@ -14,12 +15,10 @@ function addNewTaskToTodos (tasksData) {
     const taskDesc = document.querySelector('#taskdescription')?.value
     const form = document.getElementById('task-form')
     if (taskName) {
-        const taskObject = {}
-        taskObject.taskName = taskName
-        taskObject.taskDescription = taskDesc
+        const taskObject = {taskName,taskDesc}
         tasksData.push(taskObject)
         saveTasksData(tasksData)
-        todoListElement.appendChild(createCard(taskName,taskDesc))
+        todoListElement.appendChild(createCard(taskObject))
         form.reset()
     } else {
         alert('Please write your task name before adding')
@@ -31,13 +30,13 @@ function saveTasksData (tasksData) {
 }
 
 
-function createCard (taskName, taskDesc) {
+function createCard (taskObject) {
         const taskCard = document.createElement('div')
         taskCard.classList.add('task-card')
         const taskTitle = document.createElement('h3')
-        taskTitle.textContent = taskName
+        taskTitle.textContent = taskObject.taskName
         const taskDescription = document.createElement('p')
-        taskDescription.textContent = taskDesc
+        taskDescription.textContent = taskObject.taskDesc
         const deleteBtn = document.createElement('button')
         deleteBtn.classList.add('delete-btn')
         deleteBtn.innerHTML = 'X'
@@ -49,7 +48,7 @@ function createCard (taskName, taskDesc) {
 }
 
 function displayTodos (todoList) {
-    const  todoElements = todoList.map((element) => createCard(element.taskName,element.taskDescription))
+    const  todoElements = todoList.map((element) => createCard(element))
     console.log(todoElements)
     todoListElement.innerHTML = ''
     todoListElement.append(...todoElements)
