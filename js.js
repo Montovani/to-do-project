@@ -3,9 +3,9 @@ const todoListElement = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
 const LOCAL_STORAGE_TODO_LIST_NAME = 'mainTodoPage:TodoList'
 const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODO_LIST_NAME)) || []
-loadTaskName(tasks)
+loadTasksData(tasks)
 
-function loadTaskName (taskList) {
+function loadTasksData (taskList) {
         displayTodos(taskList)
     }
 
@@ -18,7 +18,7 @@ function addNewTaskToTodos (task) {
         taskObject.taskName = taskName
         taskObject.taskDescription = taskDesc
         task.push(taskObject)
-        saveTaskName(task)
+        saveTasksData(task)
         todoListElement.appendChild(createCard(taskName,taskDesc))
         form.reset()
     } else {
@@ -26,8 +26,8 @@ function addNewTaskToTodos (task) {
     }
 }
 
-function saveTaskName (task) {
-    localStorage.setItem(LOCAL_STORAGE_TODO_LIST_NAME,JSON.stringify(task))
+function saveTasksData (tasksData) {
+    localStorage.setItem(LOCAL_STORAGE_TODO_LIST_NAME,JSON.stringify(tasksData))
 }
 
 
@@ -56,16 +56,13 @@ function displayTodos (todoList) {
 }
 
 function removeTask (e){
-    console.log(e)
-    console.log(e.target.parentNode)
-    console.log([...e.currentTarget.children])
     if (e.target.classList.contains('delete-btn')) {
         const cardList = e.target.parentNode
         const index = [...e.currentTarget.children].indexOf(cardList)
         console.log('index found: ' + index)
         tasks.splice(index,1)
         console.log(tasks)
-        saveTaskName(tasks)
+        saveTasksData(tasks)
         e.target.parentNode.remove()
     }
 }
