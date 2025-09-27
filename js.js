@@ -1,38 +1,42 @@
 (function(){ 
 const todoListElement = document.getElementById('cards-list')
 const taskBtn = document.getElementById('submit-btn')
-const form = document.getElementById('task-form')
 const LOCAL_STORAGE_TODO_LIST_NAME = 'mainTodoPage:TodoList'
 const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODO_LIST_NAME)) || []
-loadTaskName(tasks)
+console.log(tasks)
+loadTasksData(tasks)
 
-function loadTaskName (taskList) {
+function loadTasksData (taskList) {
         displayTodos(taskList)
     }
 
-function addNewTaskToTodos (task) {
+function addNewTaskToTodos (tasksData) {
     const taskName = document.querySelector('#taskname')?.value
+    const taskDesc = document.querySelector('#taskdescription')?.value
+    const form = document.getElementById('task-form')
     if (taskName) {
-        task.push(taskName)
-        saveTaskName(task)
-        todoListElement.appendChild(createCard(taskName))
+        const taskObject = {taskName,taskDesc}
+        tasksData.push(taskObject)
+        saveTasksData(tasksData)
+        todoListElement.appendChild(createCard({taskName,taskDesc}))
         form.reset()
     } else {
-        alert('Please write your task before adding')
+        alert('Please write your task name before adding')
     }
 }
 
-function saveTaskName (task) {
-    localStorage.setItem(LOCAL_STORAGE_TODO_LIST_NAME,JSON.stringify(task))
+function saveTasksData (tasksData) {
+    localStorage.setItem(LOCAL_STORAGE_TODO_LIST_NAME,JSON.stringify(tasksData))
 }
 
 
-function createCard (task) {
+function createCard ({taskName,taskDesc}) {
         const taskCard = document.createElement('div')
         taskCard.classList.add('task-card')
         const taskTitle = document.createElement('h3')
-        taskTitle.textContent = task
+        taskTitle.textContent = taskName
         const taskDescription = document.createElement('p')
+        taskDescription.textContent = taskDesc
         const deleteBtn = document.createElement('button')
         deleteBtn.classList.add('delete-btn')
         deleteBtn.innerHTML = 'X'
@@ -52,11 +56,12 @@ function displayTodos (todoList) {
 
 function removeTask (e){
     if (e.target.classList.contains('delete-btn')) {
-        const index = tasks.findIndex((element) => element === e.target.previousSibling.previousSibling.textContent)
+        const cardList = e.target.parentNode
+        const index = [...e.currentTarget.children].indexOf(cardList)
         console.log('index found: ' + index)
         tasks.splice(index,1)
         console.log(tasks)
-        saveTaskName(tasks)
+        saveTasksData(tasks)
         e.target.parentNode.remove()
     }
 }
