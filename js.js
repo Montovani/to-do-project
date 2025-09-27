@@ -18,7 +18,7 @@ function addNewTaskToTodos (tasksData) {
         const taskObject = {taskName,taskDesc}
         tasksData.push(taskObject)
         saveTasksData(tasksData)
-        todoListElement.appendChild(createCard(taskObject))
+        todoListElement.appendChild(createCard({taskName,taskDesc}))
         form.reset()
     } else {
         alert('Please write your task name before adding')
@@ -30,13 +30,13 @@ function saveTasksData (tasksData) {
 }
 
 
-function createCard (taskObject) {
+function createCard ({taskName,taskDesc}) {
         const taskCard = document.createElement('div')
         taskCard.classList.add('task-card')
         const taskTitle = document.createElement('h3')
-        taskTitle.textContent = taskObject.taskName
+        taskTitle.textContent = taskName
         const taskDescription = document.createElement('p')
-        taskDescription.textContent = taskObject.taskDesc
+        taskDescription.textContent = taskDesc
         const deleteBtn = document.createElement('button')
         deleteBtn.classList.add('delete-btn')
         deleteBtn.innerHTML = 'X'
