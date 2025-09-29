@@ -26,24 +26,51 @@
 }
 .new-task-btn {
     align-self: flex-end;
-    
 }
 .task-card {
-    width: 300px;
-    height: auto;
-    background-color: rgb(169, 165, 165);
+    width: 365px;
+    height: 134px;
+    background-color: #36363d;
     padding: 10px;
-    border: 2px solid black;
+    border: 1px solid #ffffff;
+    box-shadow: 0px 0px 3px -1px #ffffff;
     display: flex;
     flex-direction: column;
+    margin-top: 18px;
+    border-radius: 16px;
+}
+.task-card h3 {
+    margin-left: 15px;
     margin-top: 10px;
+    font-family: sans-serif;
+    font-size: 25px;
+}
+.task-card p {
+    font-size: 18px;
+    align-self: flex-start;
+    margin-left: 15px;
 }
 .delete-btn {
     align-self: flex-end;
     margin-top: auto;
+    background-color: #c2c2ce;
+    border-radius: 6px;
+    height: 40px;
+    width: 45px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 3px #db1414 solid;
+    color: #db1414;
+    font-weight: bold;
+    transition: all ease-in-out 0.2s;
+
+}
+.delete-btn:hover{
+    background-color: #db1414;
+    color: #c2c2ce;
 }
 body {
-    background-color: rgb(40, 40, 46);
+    background-color: #28282e;
     color: white;
     font-family: sans-serif;
 }
@@ -95,14 +122,22 @@ body {
     margin-left: -15px;
 }
 #submit-btn {
-    border-radius: 6px;
-    height: 34px;
-    width: 120px;
-    background-color: #f74a15 ;
-    color: #ffffff;
-    font-family: sans-serif;
+  border: 2px solid #F24E1E;
+  background-color: #F24E1E;
+  border-radius: 0.9em;
+  cursor: pointer;
+  padding: 0.8em 1.2em 0.8em 1em;
+  transition: all ease-in-out 0.2s;
+  font-size: 16px;
+  color: #ffffff;
+}
+#submit-btn span {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 600;
 }
 #submit-btn:hover {
-    background-color: #ac3a17;
-    transform: scale(1.01);
+    background-color: #da491d
 }
