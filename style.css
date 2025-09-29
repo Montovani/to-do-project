@@ -33,6 +33,34 @@
     margin-top: auto;
 }
 body {
-    background-color: rgb(70, 68, 68);
+    background-color: rgb(40, 40, 46);
     color: white;
+    font-family: sans-serif;
+}
+.main-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #ffffff;
+}
+.nav-title{
+    font-size: 26px;
+}
+.container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.task-creator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sub-line{
+    background-color: #F24E1E;
+    margin-top: -20px;
+    margin-left: -30px;
+    width: 180px;
+    height: 5px;
 }
