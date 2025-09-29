@@ -7,11 +7,14 @@
 }
 #taskdescription {
     width: 500px;
-    padding: 5px 5px 80px 5px;
+    height: 80px;
     border-radius: 6px;
     background-color: #e0e0e4;
-    font-size: 25px;
+    font-size: 20px;
     font-family: sans-serif;
+    border: 0px;
+    padding: 0px;
+    resize: none;
 }
 .task-form{
     display: flex;
@@ -78,4 +81,28 @@ body {
 .task-description p {
     font-size: 20px;
     margin-bottom: 10px;
+}
+.list-of-tasks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.list-of-tasks h2 {
+    font-size: 32px;
+}
+.list-of-tasks .sub-line {
+    width: 120px;
+    margin-left: -15px;
+}
+#submit-btn {
+    border-radius: 6px;
+    height: 34px;
+    width: 120px;
+    background-color: #f74a15 ;
+    color: #ffffff;
+    font-family: sans-serif;
+}
+#submit-btn:hover {
+    background-color: #ac3a17;
+    transform: scale(1.01);
 }
