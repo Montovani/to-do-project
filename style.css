@@ -1,10 +1,17 @@
 #taskname {
     width: 300px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #e0e0e4;
+    font-size: 25px;
 }
 #taskdescription {
     width: 500px;
-    height: 150px;
-    margin-top: 10px;
+    padding: 5px 5px 80px 5px;
+    border-radius: 6px;
+    background-color: #e0e0e4;
+    font-size: 25px;
+    font-family: sans-serif;
 }
 .task-form{
     display: flex;
@@ -63,4 +70,12 @@ body {
     margin-left: -30px;
     width: 180px;
     height: 5px;
+}
+.task-name p {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.task-description p {
+    font-size: 20px;
+    margin-bottom: 10px;
 }
