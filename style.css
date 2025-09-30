@@ -31,7 +31,6 @@
 }
 .task-card {
     width: 465px;
-    height: 150px;
     background-color: #36363d;
     padding: 10px;
     border: 1px solid #ffffff;
@@ -42,6 +41,13 @@
     justify-content: flex-start;
     margin-top: 18px;
     border-radius: 16px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    min-width: 0;             
+    max-width: 100%; 
+    min-height: 150px;
+    max-height: 100%;
 }
 .task-card h3 {
     margin: 0 0 5px 15px;
@@ -51,6 +57,7 @@
 .task-card p {
     font-size: 18px;
     margin: 10px 0 0 15px;
+    word-break: break-all;
 }
 .delete-btn {
     align-self: flex-end;
@@ -72,7 +79,7 @@
     color: #c2c2ce;
 }
 body {
-    background-color: #28282e;
+    background-color: #101828;
     color: white;
     font-family: sans-serif;
 }
