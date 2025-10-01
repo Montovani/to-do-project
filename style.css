@@ -150,3 +150,17 @@ body {
 #submit-btn:hover {
     background-color: #da491d
 }
+@media (max-width: 600px) {
+    .task-card {
+        min-width: 50%;
+        max-width: 70%;
+        margin: 18px auto;
+        
+    }
+   .task-name {
+    margin: 0 auto;
+   }
+   #taskdescription {
+    width: 50%;
+   }
+}
