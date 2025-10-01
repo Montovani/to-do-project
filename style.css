@@ -160,7 +160,16 @@ body {
    .task-name {
     margin: 0 auto;
    }
+   .task-description {
+    margin: 0 auto;
+   }
    #taskdescription {
-    width: 50%;
+    width: 300px;
+    border: auto;
+    padding: auto;
+    font-size: 17px;
+   }
+   .new-task-btn {
+    align-self: center;
    }
 }
