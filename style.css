@@ -1,3 +1,4 @@
+* { box-sizing: border-box; }
 #taskname {
     width: 300px;
     height: 40px;
@@ -78,10 +79,16 @@
     background-color: #db1414;
     color: #c2c2ce;
 }
-body {
+body{
     background-color: #101828;
     color: white;
     font-family: sans-serif;
+     margin: 0; 
+     padding: 0;
+}
+html {
+    margin: 0; 
+    padding: 0;
 }
 .main-header {
     display: flex;
@@ -96,6 +103,7 @@ body {
     display:flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 .task-creator {
     display: flex;
