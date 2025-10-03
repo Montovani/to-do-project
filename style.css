@@ -150,6 +150,30 @@ body {
 #submit-btn:hover {
     background-color: #da491d
 }
+footer {
+    display: flex;
+    margin: 300px auto 0;
+    justify-content: center;    
+    align-items: center;   
+    justify-content: center;
+    padding: 12px 0;
+}
+.git-logo{
+  width: 30px;                
+  height: 30px;
+  vertical-align: middle;
+  margin-left: 5px;
+  margin-bottom: 4px;
+}
+.footer-text {
+    color:#686879;
+    margin: 0;
+    display: inline;
+    
+}
+.footer-text a {
+    color: #686879 ;
+}
 @media (max-width: 600px) {
     .task-card {
         min-width: 50%;
